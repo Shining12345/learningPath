@@ -46,7 +46,7 @@ MyStruct swap_operation(vector<int>lis, long double best) {
 			fitness.push_back(temp_func);
 		}
 	}
-	update_ban2(number, fitness);
+	update_ban(number, fitness);
 	long double min_value3 = *min_element(save_fitness.begin(), save_fitness.end());
 	int min_value_index = find(save_fitness.begin(), save_fitness.end(), min_value3) - save_fitness.begin();
 	//print_vector_double(save_fitness);
