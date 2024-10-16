@@ -1,0 +1,22 @@
+int get_badindex(vector<int>result2) {
+	vector<int>res = result2;
+	vector<int>temp2 = result2;
+	vector<long double>save_fitness;
+	long double temp;
+	int index;
+	for (int i = 0; i < res[res.size() - 1]; i++) {
+		if (m > count_m - 1) {
+			return 1;
+		}
+		res[res.size() - 1] = res[res.size() - 1] - 1;
+		index = i; 
+		auto it = res.begin() + index;
+		res.erase(it);
+		temp = func(res);
+		//print_vector_int2(res);
+		save_fitness.push_back(temp);
+		res = temp2;
+	}
+	int min_value_index = min_element(save_fitness.begin(), save_fitness.end()) - save_fitness.begin();
+	return min_value_index;
+}上

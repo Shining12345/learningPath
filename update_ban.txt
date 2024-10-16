@@ -1,0 +1,28 @@
+void update_ban(vector<int> number, vector<long double> fitness_value) {
+	vector<long double>fitness2 = fitness_value;
+	vector<int> num2 = number;
+	//vector<long double>ban_fun;
+	BanTable bantab = bantable2;
+	for (int i = 0; i < number.size(); i++) {
+		bantab.ban_materials.push_back(number[i]);
+		bantab.ban_func.push_back(fitness_value[i]);
+	}
+	vector<long double>res = bantab.ban_func;
+	vector<int>material = bantab.ban_materials;
+	bantab.ban_func=sortVector(bantab.ban_func);
+	vector<long double>res2;
+	vector<int>material2;
+	for (int i = 0; i < material.size(); i++) {
+		if (material2.size() <= ban_table_len-1) {
+			int max_value_index = find(res.begin(), res.end(), bantab.ban_func[bantab.ban_func.size()-i-1]) - res.begin();
+			if (find(material2.begin(), material2.end(), material[max_value_index]) == material2.end()) {
+				//bantable2.ban_func[max_value_index] = fitness_value[i];
+				material2.push_back(material[max_value_index]);
+				res2.push_back(res[max_value_index]);
+			}
+		}
+	}
+	bantable2.ban_materials = material2;
+	bantable2.ban_func = res2;
+
+}

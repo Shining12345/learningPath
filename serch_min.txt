@@ -1,0 +1,37 @@
+MyStruct search_min(vector<int> lis) {
+	if (m > count_m) {
+		MyStruct mystruct;
+		mystruct.result2 = lis;
+		mystruct.min_value3 = func(lis);
+		return mystruct;
+	}
+	long double gbest = func(lis);
+	vector<int> temp;
+	long double fitness;
+	MyStruct mystruct;
+	print_vector_int(lis);
+	while (true)
+	{
+		temp = lis;
+		print_vector_int(lis);
+		//ban_table.clear();
+		mystruct = swap_operation(lis, gbest);
+		print_vector_int(mystruct.result2);
+		lis = mystruct.result2;
+		fitness = mystruct.min_value3;
+		if (fitness >= gbest) {
+			mystruct.result2 = temp;
+			mystruct.min_value3 = gbest;
+			return mystruct;
+
+		}
+		if (fitness < gbest) {
+			gbest = fitness;
+
+		}
+		if (m > count_m) {
+			return mystruct;
+			break;
+		}
+	}
+}

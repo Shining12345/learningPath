@@ -1,0 +1,73 @@
+MyStruct swap_operation(vector<int>lis, long double best) {
+	if (m > count_m) {
+		MyStruct mystruct;
+		mystruct.result2 = lis;
+		mystruct.min_value3 = func(lis);
+		return mystruct;
+	}
+	int min_value_index2 = get_badindex(lis);
+	if (m > count_m) {
+		MyStruct mystruct;
+		mystruct.result2 = lis;
+		mystruct.min_value3 = func(lis);
+		return mystruct;
+	}
+	//	vector<int> ban_path;
+	vector<long double>ban_func;
+	long double temp_func;
+	//cout << min_value_index2 << endl;
+	vector<int>result2 = lis;
+	vector<long double>save_fitness;
+	int value_index;
+	//update_ban_table(min_value_index2);
+	BanTable bantable3 = bantable2;
+	vector<int>number;
+	vector<long double> fitness;
+	for (int i = 0; i < N[0][0]; i++) {
+		if (find(result2.begin(), result2.end() - 1, i) != result2.end() - 1) {
+			save_fitness.push_back(999);
+			lis = result2;
+		}
+		else if (find(bantable3.ban_materials.begin(), bantable3.ban_materials.end(), i) != bantable3.ban_materials.end())
+		{
+			save_fitness.push_back(99);
+			lis = result2;
+		}
+		else {
+			if (m > count_m) {
+				save_fitness.push_back(999999);
+				continue;
+			}
+			lis[min_value_index2] = i;
+			temp_func = func(lis);
+			save_fitness.push_back(temp_func);
+			lis = result2;
+			number.push_back(i);
+			fitness.push_back(temp_func);
+		}
+	}
+	update_ban2(number, fitness);
+	long double min_value3 = *min_element(save_fitness.begin(), save_fitness.end());
+	int min_value_index = find(save_fitness.begin(), save_fitness.end(), min_value3) - save_fitness.begin();
+	//print_vector_double(save_fitness);
+	if (best > min_value3) {
+		result2[min_value_index2] = min_value_index;
+	}
+	else
+	{
+		MyStruct mystr = Amnesty_rule(lis, min_value_index2, best);
+		if (mystr.min_value3 < best) {
+			result2 = mystr.result2;
+			min_value3 = mystr.min_value3;
+		}
+		else {
+			result2 = lis;
+		}
+			//result2 = lis;
+	}
+
+	MyStruct  resul;
+	resul.result2 = result2;
+	resul.min_value3 = min_value3;/
+	return resul;
+}

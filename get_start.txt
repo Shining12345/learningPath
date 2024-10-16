@@ -1,0 +1,10 @@
+vector <int> get_start() {
+	long double max_value = *max_element(MT[0].begin(), MT[0].end());
+	long double min_value = *min_element(MT[0].begin(), MT[0].end());
+	long double NL = LT[0][k[0][0]] / max_value;
+	long double NU = LT[1][k[0][0]] / min_value;
+	int len_start = int((NU - NL) * start_len_weight + NL);
+	vector<int>res = CreateRandomNums(0, N[0][0] - 1, len_start);
+	res.push_back(len_start);
+	return res;
+}
