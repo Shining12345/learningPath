@@ -19,4 +19,4 @@ int get_badindex(vector<int>result2) {
 	}
 	int min_value_index = min_element(save_fitness.begin(), save_fitness.end()) - save_fitness.begin();
 	return min_value_index;
-}上
+}
